@@ -1,4 +1,5 @@
 <!-- HTML Markup and Styling go here -->
+<!-- I guess the CSS file can be used for CSS jank and I can just specify Tailwind styles in here -->
 
 <h1>Password Generator</h1>
 
@@ -21,7 +22,9 @@
 </div>
 
 <div>
-  <button>Generate</button>
+  <!-- Define an event to listen for and an event handler in the associated
+  component -->
+  <button (click)="onButtonClick()">Generate</button>
 </div>
 
 <div><label for="">Your password</label><input /></div>
