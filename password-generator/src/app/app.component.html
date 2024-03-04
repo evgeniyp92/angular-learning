@@ -1,30 +1,40 @@
 <!-- HTML Markup and Styling go here -->
-<!-- I guess the CSS file can be used for CSS jank and I can just specify Tailwind styles in here -->
+<!-- I guess the CSS file can be used for CSS jank and I can just specify
+Tailwind styles in here -->
 
 <h1>Password Generator</h1>
 
 <div>
-  <label for="length">Enter Length</label>
-  <input type="number" name="length" id="length" />
+  <label>Enter Length</label>
+  <input type="number" />
 </div>
 
 <div>
   <label for="">Use Letters</label>
-  <input type="checkbox" name="" id="" />
+  <input type="checkbox" />
 </div>
 <div>
   <label for="">Use Numbers</label>
-  <input type="checkbox" name="" id="" />
+  <input type="checkbox" />
 </div>
 <div>
   <label for="">Use Symbols</label>
-  <input type="checkbox" name="" id="" />
+  <input type="checkbox" />
 </div>
 
 <div>
   <!-- Define an event to listen for and an event handler in the associated
-  component -->
+  component, aka handler binding syntax -->
   <button (click)="onButtonClick()">Generate</button>
 </div>
 
-<div><label for="">Your password</label><input /></div>
+<div>
+  <label>Your password</label>
+  <!-- Property binding syntax -->
+  <!-- Can display state this way -->
+  <!-- Can also call methods -->
+  <!-- Alternate syntax -->
+  <input [value]="password" />
+  <input [value]="getPassword()" />
+  <input value="{{ password }}" />
+</div>

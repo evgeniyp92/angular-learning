@@ -11,8 +11,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  // Basic function that needs to be mapped in the template
+  public password = '';
+
   public onButtonClick() {
-    console.log('Button was clicked');
+    this.password = 'My Password';
+  }
+
+  public getPassword() {
+    return this.password;
   }
 }
