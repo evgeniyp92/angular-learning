@@ -15,29 +15,38 @@ interface FieldEventTarget extends EventTarget {
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  private password = '';
-  private options = {
+  private _password = '';
+  private _options = {
     letters: false,
     numbers: false,
     symbols: false,
     length: 0,
   };
 
-  public get pw() {
-    return this.password;
+  public get password() {
+    return this._password;
   }
 
   public onButtonClick() {
-    console.log(`
-      About to generate a password with the following: 
-      Includes letters: ${this.options.letters}
-      Includes numbers: ${this.options.numbers}
-      Includes symbols: ${this.options.symbols}
-    `);
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '1234567890';
+    const symbols = '!@#$%^&*()';
+
+    let validChars = '';
+    if (this._options.letters) validChars += letters;
+    if (this._options.numbers) validChars += numbers;
+    if (this._options.symbols) validChars += symbols;
+
+    let generatedPassword = '';
+    for (let index = 0; index < this._options.length; index++) {
+      const element = validChars[Math.floor(Math.random() * validChars.length)];
+      generatedPassword += element;
+    }
+    this._password = generatedPassword;
   }
 
   public toggleOption(arg: 'letters' | 'numbers' | 'symbols') {
-    this.options[arg] = !this.options[arg];
+    this._options[arg] = !this._options[arg];
   }
 
   public changeLength(eventTarget: EventTarget | null) {
@@ -45,7 +54,7 @@ export class AppComponent {
     const value = (eventTarget as HTMLInputElement).value;
     const length = Number(value);
     if (Number.isInteger(length)) {
-      this.options.length = length;
+      this._options.length = length;
     }
   }
 }
