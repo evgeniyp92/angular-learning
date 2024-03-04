@@ -16,7 +16,12 @@ export class AppComponent {
     letters: false,
     numbers: false,
     symbols: false,
+    length: 0,
   };
+
+  public get pw() {
+    return this.password;
+  }
 
   public onButtonClick() {
     console.log(`
@@ -31,7 +36,10 @@ export class AppComponent {
     this.options[arg] = !this.options[arg];
   }
 
-  public get pw() {
-    return this.password;
+  public changeLength(value: string) {
+    const parsedValue = parseInt(value);
+    if (!isNaN(parsedValue)) {
+      this.options.length = parsedValue;
+    }
   }
 }

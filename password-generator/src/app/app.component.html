@@ -6,7 +6,9 @@ Tailwind styles in here -->
 
 <div>
   <label>Enter Length</label>
-  <input type="number" />
+  <!-- In angular you get access to the browser event object via the $ sign
+  (Does accessing browser objects via $ apply to everything?) -->
+  <input type="number" (input)="changeLength($event.target.value)" />
 </div>
 
 <div>
