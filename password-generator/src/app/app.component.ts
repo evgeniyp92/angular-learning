@@ -40,8 +40,8 @@ export class AppComponent {
     this.options[arg] = !this.options[arg];
   }
 
-  public changeLength(target: FieldEventTarget | null) {
-    if (!target || !target.value) return;
+  public changeLength(e: Event) {
+    const target = e.target as HTMLInputElement;
     const parsedValue = parseInt(target.value);
     if (!isNaN(parsedValue)) {
       this.options.length = parsedValue;
