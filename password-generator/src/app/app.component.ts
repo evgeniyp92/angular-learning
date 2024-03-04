@@ -3,6 +3,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+interface FieldEventTarget extends EventTarget {
+  value?: string;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -36,8 +40,9 @@ export class AppComponent {
     this.options[arg] = !this.options[arg];
   }
 
-  public changeLength(value: string) {
-    const parsedValue = parseInt(value);
+  public changeLength(target: FieldEventTarget | null) {
+    if (!target || !target.value) return;
+    const parsedValue = parseInt(target.value);
     if (!isNaN(parsedValue)) {
       this.options.length = parsedValue;
     }
