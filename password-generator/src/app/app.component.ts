@@ -11,19 +11,27 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  public password = '';
+  private password = '';
   private options = {
     letters: false,
     numbers: false,
     symbols: false,
   };
 
-  public onButtonClick(): void {
-    this.password = 'My Password';
+  public onButtonClick() {
+    console.log(`
+      About to generate a password with the following: 
+      Includes letters: ${this.options.letters}
+      Includes numbers: ${this.options.numbers}
+      Includes symbols: ${this.options.symbols}
+    `);
   }
 
-  public onChangeOptions(arg: 'letters' | 'numbers' | 'symbols') {
+  public toggleOption(arg: 'letters' | 'numbers' | 'symbols') {
     this.options[arg] = !this.options[arg];
-    console.log(this.options);
+  }
+
+  public get pw() {
+    return this.password;
   }
 }

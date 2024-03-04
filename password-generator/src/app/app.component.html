@@ -11,15 +11,15 @@ Tailwind styles in here -->
 
 <div>
   <label>Use Letters</label>
-  <input type="checkbox" (change)="onChangeOptions('letters')" />
+  <input type="checkbox" (change)="toggleOption('letters')" />
 </div>
 <div>
   <label for="">Use Numbers</label>
-  <input type="checkbox" (change)="onChangeOptions('numbers')" />
+  <input type="checkbox" (change)="toggleOption('numbers')" />
 </div>
 <div>
   <label for="">Use Symbols</label>
-  <input type="checkbox" (change)="onChangeOptions('symbols')" />
+  <input type="checkbox" (change)="toggleOption('symbols')" />
 </div>
 
 <div>
@@ -32,5 +32,5 @@ Tailwind styles in here -->
   <label>Your password</label>
   <!-- Property binding syntax -->
   <!-- Can display state this way -->
-  <input [value]="password" />
+  <input [value]="pw" />
 </div>
