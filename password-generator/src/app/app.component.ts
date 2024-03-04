@@ -16,12 +16,4 @@ export class AppComponent {
   public onButtonClick() {
     this.password = 'My Password';
   }
-
-  public getPassword() {
-    return this.password;
-  }
-
-  public getName() {
-    return 'Alex Bowman';
-  }
 }
