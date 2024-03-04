@@ -12,8 +12,18 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   public password = '';
+  private options = {
+    letters: false,
+    numbers: false,
+    symbols: false,
+  };
 
-  public onButtonClick() {
+  public onButtonClick(): void {
     this.password = 'My Password';
+  }
+
+  public onChangeOptions(arg: 'letters' | 'numbers' | 'symbols') {
+    this.options[arg] = !this.options[arg];
+    console.log(this.options);
   }
 }

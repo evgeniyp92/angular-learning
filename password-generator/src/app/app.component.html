@@ -10,16 +10,16 @@ Tailwind styles in here -->
 </div>
 
 <div>
-  <label for="">Use Letters</label>
-  <input type="checkbox" />
+  <label>Use Letters</label>
+  <input type="checkbox" (change)="onChangeOptions('letters')" />
 </div>
 <div>
   <label for="">Use Numbers</label>
-  <input type="checkbox" />
+  <input type="checkbox" (change)="onChangeOptions('numbers')" />
 </div>
 <div>
   <label for="">Use Symbols</label>
-  <input type="checkbox" />
+  <input type="checkbox" (change)="onChangeOptions('symbols')" />
 </div>
 
 <div>
