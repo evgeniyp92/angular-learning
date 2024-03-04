@@ -27,7 +27,14 @@ Tailwind styles in here -->
 <div>
   <!-- Define an event to listen for and an event handler in the associated
   component, aka handler binding syntax -->
-  <button (click)="onButtonClick()">Generate</button>
+  <button
+    (click)="onButtonClick()"
+    [disabled]="
+      !(opts.length && (opts.letters || opts.numbers || opts.symbols))
+    "
+  >
+    Generate
+  </button>
 </div>
 
 <div>

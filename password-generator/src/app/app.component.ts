@@ -27,6 +27,14 @@ export class AppComponent {
     return this._password;
   }
 
+  public get opts() {
+    return this._options;
+  }
+
+  public toggleOption(arg: 'letters' | 'numbers' | 'symbols') {
+    this._options[arg] = !this._options[arg];
+  }
+
   public onButtonClick() {
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '1234567890';
@@ -43,10 +51,6 @@ export class AppComponent {
       generatedPassword += element;
     }
     this._password = generatedPassword;
-  }
-
-  public toggleOption(arg: 'letters' | 'numbers' | 'symbols') {
-    this._options[arg] = !this._options[arg];
   }
 
   public changeLength(eventTarget: EventTarget | null) {
