@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 interface FieldEventTarget extends EventTarget {
   value?: string;
@@ -10,7 +11,7 @@ interface FieldEventTarget extends EventTarget {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -52,7 +52,8 @@ Tailwind styles in here -->
         Generate!
       </button>
 
-      <div class="box">
+      <!-- Structural directive -->
+      <div class="box" *ngIf="password">
         <label>Your Password</label>
         <!-- Property binding syntax -->
         <!-- Can display state this way -->
