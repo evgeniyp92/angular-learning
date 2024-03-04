@@ -32,9 +32,12 @@ Tailwind styles in here -->
   <label>Your password</label>
   <!-- Property binding syntax -->
   <!-- Can display state this way -->
-  <!-- Can also call methods -->
-  <!-- Alternate syntax -->
   <input [value]="password" />
+  <!-- Can also call methods -->
   <input [value]="getPassword()" />
+  <!-- Alternate syntax -->
   <input value="{{ password }}" />
 </div>
+
+<!-- Literally displaying the value (interpolation)-->
+{{ getName() }}

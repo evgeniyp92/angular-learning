@@ -20,4 +20,8 @@ export class AppComponent {
   public getPassword() {
     return this.password;
   }
+
+  public getName() {
+    return 'Alex Bowman';
+  }
 }
