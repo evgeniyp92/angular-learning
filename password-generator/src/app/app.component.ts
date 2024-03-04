@@ -1,3 +1,4 @@
+// An Component Class
 // Handle Events and State Here
 
 import { Component } from '@angular/core';
