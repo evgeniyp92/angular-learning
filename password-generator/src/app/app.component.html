@@ -1,46 +1,63 @@
 <!-- HTML Markup and Styling go here -->
 <!-- I guess the CSS file can be used for CSS jank and I can just specify
 Tailwind styles in here -->
-<div>
-  <h1>Password Generator</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-  <div>
-    <label>Enter Length</label>
-    <!-- In angular you get access to the browser event object via the $ sign
+      <div class="field">
+        <label>Length</label>
+        <!-- In angular you get access to the browser event object via the $ sign
   (Does accessing browser objects via $ apply to everything?) -->
-    <input type="number" (input)="changeLength($event.target)" />
-  </div>
+        <input class="input" (input)="changeLength($event.target)" />
+      </div>
 
-  <div>
-    <label>Use Letters</label>
-    <input type="checkbox" (change)="toggleOption('letters')" />
-  </div>
-  <div>
-    <label for="">Use Numbers</label>
-    <input type="checkbox" (change)="toggleOption('numbers')" />
-  </div>
-  <div>
-    <label for="">Use Symbols</label>
-    <input type="checkbox" (change)="toggleOption('symbols')" />
-  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="toggleOption('letters')" type="checkbox" />
+            Use Letters
+          </label>
+        </div>
+      </div>
 
-  <div>
-    <!-- Define an event to listen for and an event handler in the associated
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="toggleOption('numbers')" type="checkbox" />
+            Use Numbers
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="toggleOption('symbols')" type="checkbox" />
+            Use Symbols
+          </label>
+        </div>
+      </div>
+
+      <!-- Define an event to listen for and an event handler in the associated
   component, aka handler binding syntax -->
-    <button
-      (click)="onButtonClick()"
-      [disabled]="
-        !(opts.length && (opts.letters || opts.numbers || opts.symbols))
-      "
-    >
-      Generate
-    </button>
-  </div>
+      <button
+        [disabled]="
+          !(opts.length && (opts.letters || opts.numbers || opts.symbols))
+        "
+        (click)="onButtonClick()"
+        class="button is-link is-fullwidth"
+      >
+        Generate!
+      </button>
 
-  <div>
-    <label>Your password</label>
-    <!-- Property binding syntax -->
-    <!-- Can display state this way -->
-    <input [value]="password" />
+      <div class="box">
+        <label>Your Password</label>
+        <!-- Property binding syntax -->
+        <!-- Can display state this way -->
+        <input class="input" [value]="password" />
+      </div>
+    </div>
   </div>
 </div>
