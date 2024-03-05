@@ -1,0 +1,6 @@
+/* selector for the host element of a component */
+:host {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
