@@ -1,4 +1,9 @@
 <!-- name of the html tag is determined in the component class -->
-<app-card></app-card>
-<app-card></app-card>
-<app-card></app-card>
+<app-card
+  [title]="posts[0].title"
+  [imgURL]="posts[0].imageURL"
+  [username]="posts[0].username"
+  [content]="posts[0].content"
+></app-card>
+<app-card [title]="posts[1].title"></app-card>
+<app-card [title]="posts[2].title"></app-card>
