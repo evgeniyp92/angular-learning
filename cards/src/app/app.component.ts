@@ -11,5 +11,24 @@ import { CardComponent } from './card/card.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'cards';
+  posts = [
+    {
+      title: 'Neat Tree',
+      username: 'nature',
+      imageURL: 'assets/tree.jpg',
+      content: 'I saw this neat tree today!',
+    },
+    {
+      title: 'Snowy Mountain',
+      username: 'mountainlover89',
+      imageURL: 'assets/mountain.jpg',
+      content: 'Picture of a snowy mountain',
+    },
+    {
+      title: 'Mountain Biking',
+      username: 'biking420',
+      imageURL: 'assets/biking.jpg',
+      content: 'I did some biking today!',
+    },
+  ];
 }
