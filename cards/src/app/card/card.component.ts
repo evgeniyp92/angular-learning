@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 export class CardComponent {
   // tell the component how to receive props
   @Input() title = '';
-  @Input() imgURL = '';
+  @Input() imageURL = '';
   @Input() username = '';
   @Input() content = '';
 }
