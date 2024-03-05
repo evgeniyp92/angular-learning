@@ -1,4 +1,7 @@
 <!-- name of the html tag is determined in the component class -->
+<!-- iterable must be present in the associated class, can also use methods-->
+<!-- can also declare an index in ngFor -->
+<!-- ngFor supports both in and of, but you must use let, no const allowed -->
 <app-card
   *ngFor="let post of posts"
   [title]="post.title"
