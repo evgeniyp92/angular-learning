@@ -9,6 +9,9 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ConvertPipe } from './convert.pipe';
+
+type CouldBeNull<T> = T | null;
 
 @Component({
   selector: 'app-root',
@@ -20,20 +23,28 @@ import { RouterOutlet } from '@angular/router';
     CurrencyPipe,
     DecimalPipe,
     JsonPipe,
+    ConvertPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  public name: string = '';
-  public date: string = '';
-  public amount: number = 0;
-  public height: number = 0;
+  public name: CouldBeNull<string> = null;
+  public date: CouldBeNull<string> = null;
+  public amount: CouldBeNull<number> = null;
+  public height: CouldBeNull<number> = null;
+  public miles: CouldBeNull<number> = null;
   public car = {
     make: 'Toyota',
     model: 'Camry',
     year: 2000,
   };
+
+  onMilesChange(eventTarget: EventTarget | null) {
+    if (eventTarget instanceof HTMLInputElement) {
+      this.miles = parseFloat(eventTarget.value);
+    }
+  }
 
   onNameChange(eventTarget: EventTarget | null) {
     if (eventTarget instanceof HTMLInputElement) {

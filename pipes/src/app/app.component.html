@@ -74,4 +74,22 @@
   <!-- JSON -->
   <!-- Without the pipe you'd just get [object Object] -->
   <pre>{{ car | json }}</pre>
+  <!-- Custom pipe -->
+  <!-- Generate custom pipes with {ng generate pipe [name]} -->
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Miles</label>
+      <input
+        type="number"
+        (input)="onMilesChange($event.target)"
+        class="form-control"
+      />
+    </div>
+    <div class="col">
+      <label for="">
+        <b>Kilometers</b>
+      </label>
+      <div>{{ miles | convert }}</div>
+    </div>
+  </div>
 </div>
