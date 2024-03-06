@@ -1,15 +1,16 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  public images = [
+  images = [
     {
       title: 'At the Beach',
       url: 'https://images.unsplash.com/photo-1519046904884-53103b34b206',
