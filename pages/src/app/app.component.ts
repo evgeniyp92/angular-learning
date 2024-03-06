@@ -97,4 +97,8 @@ export class AppComponent {
       url: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5',
     },
   ];
+
+  checkWindowIndex(index: number) {
+    return Math.abs(this.currentPage - index) < 5;
+  }
 }

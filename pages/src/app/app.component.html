@@ -11,7 +11,7 @@
       <li
         class="page-item"
         [ngClass]="{ active: i === currentPage }"
-        *ngIf="i < 5"
+        *ngIf="checkWindowIndex(i)"
       >
         <!-- on click, set the currentpage to whatever i is -->
         <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
