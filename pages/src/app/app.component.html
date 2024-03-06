@@ -5,7 +5,7 @@
       <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
     </li>
     <!-- special tag that doesn't actually return an element (like React.Fragment) -->
-    <ng-container *ngFor="let item of images; let i = index">
+    <ng-container *appTimes="images.length; let i = index">
       <!-- use ngClass to conditionally apply a css class -->
       <!-- can also pass a plain string and it will immediately get added to the
     class attribute. methods are also valid -->

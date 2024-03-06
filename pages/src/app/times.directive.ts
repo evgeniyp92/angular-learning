@@ -17,7 +17,11 @@ export class TimesDirective {
     this.viewContainer.clear();
     // create a new embedded view for each time
     for (let i = 0; i < times; i++) {
-      this.viewContainer.createEmbeddedView(this.templateRef, {});
+      this.viewContainer.createEmbeddedView(this.templateRef, {
+        // context object, receive in template the same way you'd receive in
+        // ngFor
+        index: i,
+      });
     }
   }
 }
