@@ -1,5 +1,6 @@
 <div class="container">
   <h3>Payment Form</h3>
+  <!-- Name -->
   <div class="row">
     <div class="form-group col">
       <label for="">Payee Name</label>
@@ -9,7 +10,45 @@
       <label for="">
         <b>Name</b>
       </label>
+      <!-- normal pipe -->
       <div>{{ name | titlecase }}</div>
+    </div>
+  </div>
+  <!-- Date -->
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Date</label>
+      <input
+        type="date"
+        (input)="onDateChange($event.target)"
+        class="form-control"
+      />
+    </div>
+    <div class="col">
+      <label for="">
+        <b>Date</b>
+      </label>
+      <!-- specifying options to a pipe as a template string, or as a keyword -->
+      <div>{{ date | date : "MMMM d, yyyy" }}</div>
+    </div>
+  </div>
+  <!-- Amount -->
+  <div class="row">
+    <div class="form-group col">
+      <label for="">Amount</label>
+      <input
+        type="number"
+        (input)="onAmountChange($event.target)"
+        class="form-control"
+      />
+    </div>
+    <div class="col">
+      <label for="">
+        <b>Amount</b>
+      </label>
+      <!-- currency pipe is smart and is aware which currencies are fractional
+      and which arent -->
+      <div>{{ amount | currency : "KRW" }}</div>
     </div>
   </div>
 </div>
