@@ -5,6 +5,7 @@ import {
   DatePipe,
   CurrencyPipe,
   DecimalPipe,
+  JsonPipe,
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -12,7 +13,14 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TitleCasePipe, DatePipe, CurrencyPipe, DecimalPipe],
+  imports: [
+    RouterOutlet,
+    TitleCasePipe,
+    DatePipe,
+    CurrencyPipe,
+    DecimalPipe,
+    JsonPipe,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -21,6 +29,11 @@ export class AppComponent {
   public date: string = '';
   public amount: number = 0;
   public height: number = 0;
+  public car = {
+    make: 'Toyota',
+    model: 'Camry',
+    year: 2000,
+  };
 
   onNameChange(eventTarget: EventTarget | null) {
     if (eventTarget instanceof HTMLInputElement) {
