@@ -6,6 +6,7 @@ import {
   CurrencyPipe,
   DecimalPipe,
   JsonPipe,
+  NgIf,
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -24,6 +25,7 @@ type CouldBeNull<T> = T | null;
     DecimalPipe,
     JsonPipe,
     ConvertPipe,
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

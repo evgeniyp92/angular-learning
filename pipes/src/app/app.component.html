@@ -89,7 +89,11 @@
       <label for="">
         <b>Kilometers</b>
       </label>
-      <div>{{ miles | convert : "km" }}</div>
+      <!-- null checking with ternaries -->
+      <!-- expressions need to be wrapped in parens -->
+      <div *ngIf="(miles | convert : 'km') > 10">
+        {{ miles | convert : "km" }}
+      </div>
     </div>
   </div>
 </div>
