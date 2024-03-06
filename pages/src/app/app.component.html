@@ -6,14 +6,19 @@
     <!-- use ngClass to conditionally apply a css class -->
     <!-- can also pass a plain string and it will immediately get added to the
     class attribute. methods are also valid -->
-    <li
-      class="page-item"
-      [ngClass]="{ active: i === currentPage }"
-      *ngFor="let item of images; let i = index"
-    >
-      <!-- on click, set the currentpage to whatever i is -->
-      <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
-    </li>
+    <div *ngFor="let item of images; let i = index">
+      <!-- ^ you can only apply 1 structural directive per element, and adding
+      additional elements for the sake of structural directives is a bad idea
+      -->
+      <li
+        class="page-item"
+        [ngClass]="{ active: i === currentPage }"
+        *ngIf="i < 5"
+      >
+        <!-- on click, set the currentpage to whatever i is -->
+        <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
+      </li>
+    </div>
     <li
       class="page-item"
       [ngClass]="{ disabled: currentPage === images.length - 1 }"
