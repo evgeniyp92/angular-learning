@@ -25,7 +25,12 @@
     </li>
   </ul>
 </nav>
-<div>
+<!-- <div>
   <h4>{{ images[currentPage].title }}</h4>
   <img [src]="images[currentPage].url" />
+</div> -->
+<!-- ngSwitch implementation. basically, a switch statement in markup -->
+<div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">default page</div>
+  <div *ngSwitchDefault>not default page</div>
 </div>
