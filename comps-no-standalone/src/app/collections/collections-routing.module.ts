@@ -1,3 +1,4 @@
+// these routers have their routes read by the core app module
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CollectionsHomeComponent } from './collections-home/collections-home.component';
