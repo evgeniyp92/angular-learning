@@ -2,7 +2,14 @@
   <div class="columns is-centered">
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Typing Challenge</h1>
-      <p class="has-text-centered">{{ randomText }}</p>
+      <p class="has-text-centered">
+        <!-- Use prop binding to dynamically set classes -->
+        <span
+          [class]="handleInputComparison(letter, enteredText[i])"
+          *ngFor="let letter of randomText.split(''); let i = index"
+          >{{ letter }}</span
+        >
+      </p>
       <div class="field">
         <input type="text" class="input" (input)="handleInput($event.target)" />
       </div>
