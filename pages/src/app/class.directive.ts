@@ -12,7 +12,7 @@ export class ClassDirective {
 
   // setting up the getter and setter for the backgroundColor property and using
   // the input decorator to bind the property to the directive
-  @Input() set backgroundColor(color: string) {
+  @Input() set appClass(color: string) {
     this.element.nativeElement.style.backgroundColor = color;
   }
 }
