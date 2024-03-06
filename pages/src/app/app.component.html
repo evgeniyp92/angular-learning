@@ -1,7 +1,7 @@
 <nav>
   <ul class="pagination">
     <!-- can use custom directives to toggle stuff like below -->
-    <li class="page-item" appClass [ngClass]="{ disabled: currentPage === 0 }">
+    <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
       <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
     </li>
     <!-- special tag that doesn't actually return an element (like React.Fragment) -->
@@ -27,6 +27,6 @@
   </ul>
 </nav>
 <div>
-  <h4 appClass>{{ images[currentPage].title }}</h4>
+  <h4 appClass [backgroundColor]="'red'">{{ images[currentPage].title }}</h4>
   <img [src]="images[currentPage].url" />
 </div>
