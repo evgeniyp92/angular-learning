@@ -30,6 +30,7 @@
   <img [src]="images[currentPage].url" />
 </div> -->
 <!-- ngSwitch implementation. basically, a switch statement in markup -->
+<!-- all valid expressions will render -->
 <div [ngSwitch]="currentPage">
   <div *ngSwitchCase="0">default page</div>
   <div *ngSwitchDefault>not default page</div>
