@@ -1,7 +1,7 @@
 <nav>
   <ul class="pagination">
     <!-- can use custom directives to toggle stuff like below -->
-    <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
+    <li class="page-item" [appClass]="{ disabled: currentPage === 0 }">
       <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
     </li>
     <!-- special tag that doesn't actually return an element (like React.Fragment) -->
@@ -11,7 +11,7 @@
     class attribute. methods are also valid -->
       <li
         class="page-item"
-        [ngClass]="{ active: i === currentPage }"
+        [appClass]="{ active: i === currentPage }"
         *ngIf="checkWindowIndex(i)"
       >
         <!-- on click, set the currentpage to whatever i is -->
@@ -20,13 +20,13 @@
     </ng-container>
     <li
       class="page-item"
-      [ngClass]="{ disabled: currentPage === images.length - 1 }"
+      [appClass]="{ disabled: currentPage === images.length - 1 }"
     >
       <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
     </li>
   </ul>
 </nav>
 <div>
-  <h4 [appClass]="'orange'">{{ images[currentPage].title }}</h4>
+  <h4>{{ images[currentPage].title }}</h4>
   <img [src]="images[currentPage].url" />
 </div>

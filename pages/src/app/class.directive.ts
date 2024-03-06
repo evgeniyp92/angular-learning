@@ -13,7 +13,13 @@ export class ClassDirective {
   // setting up the getter and setter for the backgroundColor property and using
   // the input decorator to bind the property to the directive
   // specify an alias in the decorator argument to bind the property to the directive
-  @Input('appClass') set backgroundColor(color: string) {
-    this.element.nativeElement.style.backgroundColor = color;
+  @Input('appClass') set classNames(classObj: any) {
+    for (const key in classObj) {
+      if (classObj[key]) {
+        this.element.nativeElement.classList.add(key);
+      } else {
+        this.element.nativeElement.classList.remove(key);
+      }
+    }
   }
 }
