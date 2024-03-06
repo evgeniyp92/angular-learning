@@ -1,7 +1,7 @@
 <nav>
   <ul class="pagination">
     <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
-      <a class="page-link">Previous</a>
+      <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
     </li>
     <!-- use ngClass to conditionally apply a css class -->
     <!-- can also pass a plain string and it will immediately get added to the
@@ -11,13 +11,14 @@
       [ngClass]="{ active: i === currentPage }"
       *ngFor="let item of images; let i = index"
     >
-      <a class="page-link">{{ i + 1 }}</a>
+      <!-- on click, set the currentpage to whatever i is -->
+      <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
     </li>
     <li
       class="page-item"
       [ngClass]="{ disabled: currentPage === images.length - 1 }"
     >
-      <a class="page-link">Next</a>
+      <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
     </li>
   </ul>
 </nav>
