@@ -1,8 +1,13 @@
 <!-- dont use href, use routerLink instead -->
 <div class="ui container">
   <div class="ui secondary pointing menu">
-    <a routerLink="/elements" class="item">Elements</a>
-    <a routerLink="/collections" class="item">Collections</a>
+    <!-- routerLinkActive applies a class when the specific link is being visited -->
+    <a routerLink="/elements" class="item" routerLinkActive="active"
+      >Elements</a
+    >
+    <a routerLink="/collections" class="item" routerLinkActive="active"
+      >Collections</a
+    >
   </div>
   <div class="ui segment">
     <!-- route content gets displayed in the router outlet tag -->
