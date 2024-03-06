@@ -7,9 +7,10 @@ import { ElementsModule } from './elements/elements.module';
 import { CollectionsModule } from './collections/collections.module';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ElementsModule, CollectionsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+  declarations: [AppComponent], // list components pipes, directives created in a module
+  imports: [BrowserModule, AppRoutingModule, ElementsModule, CollectionsModule], // list dependencies of the module
+  exports: [], // list what is made available to other modules
+  providers: [], // old way of connecting modules and services
+  bootstrap: [AppComponent], // used by AppModule only to declare what component to start with
 })
 export class AppModule {}
