@@ -10,7 +10,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent], // list components pipes, directives created in a module
-  imports: [BrowserModule, AppRoutingModule, ElementsModule, CollectionsModule], // list dependencies of the module
+  // order of imports matters for routing, FIFO principle
+  imports: [BrowserModule, ElementsModule, CollectionsModule, AppRoutingModule], // list dependencies of the module
   exports: [], // list what is made available to other modules
   providers: [], // old way of connecting modules and services
   bootstrap: [AppComponent], // used by AppModule only to declare what component to start with
