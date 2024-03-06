@@ -3,13 +3,11 @@
     <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
       <a class="page-link" (click)="currentPage = currentPage - 1">Previous</a>
     </li>
-    <!-- use ngClass to conditionally apply a css class -->
-    <!-- can also pass a plain string and it will immediately get added to the
+    <!-- special tag that doesn't actually return an element (like React.Fragment) -->
+    <ng-container *ngFor="let item of images; let i = index">
+      <!-- use ngClass to conditionally apply a css class -->
+      <!-- can also pass a plain string and it will immediately get added to the
     class attribute. methods are also valid -->
-    <div *ngFor="let item of images; let i = index">
-      <!-- ^ you can only apply 1 structural directive per element, and adding
-      additional elements for the sake of structural directives is a bad idea
-      -->
       <li
         class="page-item"
         [ngClass]="{ active: i === currentPage }"
@@ -18,7 +16,7 @@
         <!-- on click, set the currentpage to whatever i is -->
         <a class="page-link" (click)="currentPage = i">{{ i + 1 }}</a>
       </li>
-    </div>
+    </ng-container>
     <li
       class="page-item"
       [ngClass]="{ disabled: currentPage === images.length - 1 }"
