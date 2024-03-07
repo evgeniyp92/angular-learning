@@ -10,7 +10,10 @@
     <div class="ui vertical fluid tabular menu">
       <!-- routes provided thru routerlink are relative to their location as in unix/linux -->
       <!-- empty string gets processed as '/', so the root route -->
-      <a class="item" routerLink="./" routerLinkActive="active">Biography</a>
+      <!-- can also use prop binding to build out links, helps building arbitrary paths -->
+      <a class="item" [routerLink]="['./']" routerLinkActive="active"
+        >Biography</a
+      >
       <a class="item" routerLink="./companies" routerLinkActive="active"
         >Companies</a
       >
