@@ -1,3 +1,11 @@
 <app-divider>Modal</app-divider>
 <button (click)="onClick()" class="ui button">Show The Modal!</button>
-<app-modal (close)="onClick()" *ngIf="modalOpen"></app-modal>
+<app-modal (close)="onClick()" *ngIf="modalOpen">
+  <div modalTitle>This is the custom title</div>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur suscipit
+    excepturi hic animi. Reiciendis ratione blanditiis atque tenetur debitis
+    maiores aspernatur, culpa pariatur odio voluptate! Voluptates, eos. Ex,
+    fugiat pariatur.
+  </p>
+</app-modal>

@@ -2,14 +2,9 @@
   <!-- intercept click events on the modal and stop them propagating -->
   <div class="ui modal visible active" (click)="stopPropagation($event)">
     <i class="close icon" (click)="onCloseClick()"></i>
-    <div class="header">Modal</div>
+    <div class="header"><ng-content select="[modalTitle]"></ng-content></div>
     <div class="content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam numquam
-        blanditiis omnis dignissimos molestias! Est consectetur libero delectus
-        quibusdam magnam quis dolorem quia praesentium impedit dolorum maxime,
-        cupiditate provident nesciunt!
-      </p>
+      <ng-content select="p"></ng-content>
     </div>
     <div class="actions">
       <button class="ui button" (click)="onCloseClick()">Ok</button>
