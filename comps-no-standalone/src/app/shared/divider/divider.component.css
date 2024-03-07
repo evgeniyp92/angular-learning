@@ -1,0 +1,5 @@
+/* apply 1em of padding to all but the first host element */
+:host:not(:first-of-type) {
+  display: block;
+  padding-top: 1em;
+}
