@@ -1,5 +1,6 @@
 <div class="ui dimmer visible active" (click)="onCloseClick()">
-  <div class="ui modal visible active">
+  <!-- intercept click events on the modal and stop them propagating -->
+  <div class="ui modal visible active" (click)="stopPropagation($event)">
     <i class="close icon" (click)="onCloseClick()"></i>
     <div class="header">Modal</div>
     <div class="content">

@@ -29,6 +29,10 @@ export class ModalComponent implements OnInit {
     this.el.nativeElement.remove();
   }
 
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+
   onCloseClick() {
     this.close.emit();
   }
