@@ -7,6 +7,9 @@
       <ng-content select="p"></ng-content>
     </div>
     <div class="actions">
+      <ng-content select="[modalFooter]"></ng-content>
+    </div>
+    <div class="actions actions-default">
       <button class="ui button" (click)="onCloseClick()">Ok</button>
     </div>
   </div>

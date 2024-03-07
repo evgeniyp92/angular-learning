@@ -1,0 +1,14 @@
+/* hide the div if its empty */
+.actions:empty {
+  display: none;
+}
+
+.actions-default {
+  /* This rule hides the element with the class "actions-default" */
+  display: none;
+}
+
+.actions:empty + .actions-default {
+  /* This rule displays the next sibling element with the class "actions-default" if the current element with the class "actions" is empty */
+  display: block;
+}
