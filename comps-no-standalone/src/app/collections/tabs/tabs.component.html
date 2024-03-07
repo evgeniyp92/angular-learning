@@ -1,1 +1,26 @@
-<p>tabs works!</p>
+<div class="ui grid">
+  <div class="four wide column">
+    <div class="ui vertical fluid tabular menu">
+      <!-- routes provided thru routerlink are relative to their location as in unix/linux -->
+      <!-- empty string gets processed as '/', so the root route -->
+      <!-- can also use prop binding to build out links, helps building arbitrary paths -->
+      <!-- can require exact matching of a path in routerLinkActiveOptions -->
+      <a
+        class="item"
+        [routerLink]="['./']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Biography</a
+      >
+      <a class="item" routerLink="./companies" routerLinkActive="active"
+        >Companies</a
+      >
+      <a class="item" routerLink="./partners" routerLinkActive="active"
+        >Partners</a
+      >
+    </div>
+  </div>
+  <div class="twelve wide stretch column">
+    <div class="ui segment"><router-outlet></router-outlet></div>
+  </div>
+</div>
