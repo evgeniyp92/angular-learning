@@ -16,7 +16,11 @@ export class AppComponent {
   // TLDR any service can be made available in any component by adding it to the constructor
   constructor(private wikipedia: WikipediaService) {}
 
+  pages = [];
+
   onTerm(term: string) {
-    console.log(this.wikipedia.search(term));
+    this.wikipedia.search(term).subscribe((response: any) => {
+      this.pages = response.query.search;
+    });
   }
 }

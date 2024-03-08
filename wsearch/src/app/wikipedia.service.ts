@@ -1,5 +1,7 @@
 // services are automatically made available to all parts of your app
 import { Injectable } from '@angular/core';
+// The HttpClient module is used to make HTTP requests
+import { HttpClient } from '@angular/common/http';
 
 // The @Injectable decorator is used to define a service. Since it's provided in
 // root, it will be available to all parts of the app. The providedIn property is
@@ -10,10 +12,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class WikipediaService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   search(term: string) {
-    console.log(`honk`);
-    return `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${term}&format=json`;
+    return this.http.get('https://en.wikipedia.org/w/api.php', {
+      params: {
+        action: 'query',
+        format: 'json',
+        list: 'search',
+        utf8: '1',
+        srsearch: term,
+        // This is used to allow cross-origin requests
+        origin: '*',
+      },
+    });
   }
 }
