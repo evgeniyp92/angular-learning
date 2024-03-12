@@ -19,6 +19,7 @@ export class AppComponent {
   pages = [];
 
   onTerm(term: string) {
+    // subscribing to the observable and getting the response
     this.wikipedia.search(term).subscribe((response: any) => {
       this.pages = response.query.search;
     });
