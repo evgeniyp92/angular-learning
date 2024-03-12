@@ -12,8 +12,16 @@ export class PhotoShowComponent {
   public photoLink: string = '';
   public didFetch: boolean = false;
 
+  ngOnInit() {
+    this.fetchPhoto();
+  }
+
   handleClick() {
-    console.log('The button was clicked');
+    this.fetchPhoto();
+  }
+
+  private fetchPhoto() {
+    this.didFetch = false;
     this.photoFetchService.search().subscribe((response) => {
       this.photoLink = response;
       this.didFetch = true;
