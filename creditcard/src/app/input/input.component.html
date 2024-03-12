@@ -7,4 +7,9 @@
     Value must be longer than
     {{ control.errors["minlength"].requiredLength }} characters
   </div>
+  <div *ngIf="control.errors['maxlength']">
+    Value must be shorter than
+    {{ control.errors["maxlength"].requiredLength }} characters
+  </div>
+  <div *ngIf="control.errors['pattern']">Invalid format</div>
 </ng-container>
