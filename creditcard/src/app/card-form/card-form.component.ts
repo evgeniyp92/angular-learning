@@ -37,4 +37,8 @@ export class CardFormComponent {
     console.log('Form submitted');
     console.table(this.cardForm.value);
   }
+
+  onResetClick() {
+    this.cardForm.reset();
+  }
 }

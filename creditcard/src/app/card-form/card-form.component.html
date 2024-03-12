@@ -6,6 +6,9 @@
   <button [disabled]="cardForm.invalid" type="submit" class="button is-primary">
     Submit
   </button>
+  <button class="button is-warning" type="button" (click)="onResetClick()">
+    Reset
+  </button>
 </form>
 <pre>{{ cardForm.value | json }}</pre>
 <pre>Valid: {{ cardForm.valid }}</pre>
