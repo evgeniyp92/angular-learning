@@ -20,7 +20,7 @@ const observable = new Observable<Car>((observer) => {
     color: 'red',
     year: 2000,
     running: true,
-    make: { name: 'Ford', dateCreated: 2000 },
+    make: { name: 'Ford', dateCreated: 1900 },
   });
 }).pipe(pluck('make', 'dateCreated'));
 
@@ -28,6 +28,16 @@ const observable = new Observable<Car>((observer) => {
 observable.subscribe((value) => {
   console.log(value);
 });
+
+export interface WikipediaResponse {
+  query: {
+    search: {
+      title: string;
+      snippet: string;
+      padeid: number;
+    }[];
+  };
+}
 
 // The @Injectable decorator is used to define a service. Since it's provided in
 // root, it will be available to all parts of the app. The providedIn property is
@@ -43,16 +53,18 @@ export class WikipediaService {
   search(term: string) {
     // this returns an observable
     // observables are the source of a lot of bugs in Angular
-    return this.http.get('https://en.wikipedia.org/w/api.php', {
-      params: {
-        action: 'query',
-        format: 'json',
-        list: 'search',
-        utf8: '1',
-        srsearch: term,
-        // This is used to allow cross-origin requests
-        origin: '*',
-      },
-    });
+    return this.http
+      .get<WikipediaResponse>('https://en.wikipedia.org/w/api.php', {
+        params: {
+          action: 'query',
+          format: 'json',
+          list: 'search',
+          utf8: '1',
+          srsearch: term,
+          // This is used to allow cross-origin requests
+          origin: '*',
+        },
+      })
+      .pipe(pluck('query', 'search'));
   }
 }

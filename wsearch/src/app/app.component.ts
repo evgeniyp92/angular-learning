@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { WikipediaService } from './wikipedia.service';
+import { WikipediaResponse, WikipediaService } from './wikipedia.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +16,12 @@ export class AppComponent {
   // TLDR any service can be made available in any component by adding it to the constructor
   constructor(private wikipedia: WikipediaService) {}
 
-  pages = [];
+  pages: unknown[] = [];
 
   onTerm(term: string) {
     // subscribing to the observable and getting the response
-    this.wikipedia.search(term).subscribe((response: any) => {
-      this.pages = response.query.search;
+    this.wikipedia.search(term).subscribe((pages) => {
+      this.pages = pages;
     });
   }
 }
