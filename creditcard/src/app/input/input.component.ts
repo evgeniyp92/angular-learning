@@ -7,6 +7,11 @@ import { FormControl } from '@angular/forms';
   styleUrl: './input.component.css',
 })
 export class InputComponent {
-  // @ts-expect-error
-  @Input() control: FormControl;
+  @Input() control: FormControl = new FormControl();
+  @Input() label: string = '';
+
+  showErrors() {
+    const { dirty, touched, errors } = this.control;
+    return dirty && touched && errors;
+  }
 }
