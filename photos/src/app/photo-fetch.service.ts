@@ -5,6 +5,7 @@ import { pluck } from 'rxjs';
 type UnsplashAPIResponse = {
   urls: {
     regular: string;
+    small: string;
   };
 };
 
@@ -21,6 +22,6 @@ export class PhotoFetchService {
           client_id: 'i7ywfYEIkdAn-zhaIpkHQbJHnVWN85MGho3eyop5LrU',
         },
       })
-      .pipe(pluck('urls', 'regular'));
+      .pipe(pluck('urls', 'small'));
   }
 }
