@@ -3,16 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PhotoShowComponent } from './photo-show/photo-show.component';
+import { PhotoFetchService } from './photo-fetch.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, PhotoShowComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [PhotoFetchService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
