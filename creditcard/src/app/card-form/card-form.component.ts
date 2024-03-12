@@ -20,4 +20,9 @@ export class CardFormComponent {
     expiration: new FormControl(''),
     cvv: new FormControl(''),
   });
+
+  onSubmit() {
+    console.log('Form submitted');
+    console.table(this.cardForm.value);
+  }
 }

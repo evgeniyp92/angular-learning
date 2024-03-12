@@ -7,7 +7,7 @@ import { FormControl, ValidationErrors } from '@angular/forms';
   styleUrl: './input.component.css',
 })
 export class InputComponent {
-  @Input() control: FormControl = new FormControl();
+  @Input() control: FormControl = new FormControl('');
   @Input() label: string = '';
 
   showErrors() {
