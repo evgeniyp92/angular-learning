@@ -11,30 +11,30 @@
     />
   </div>
   <!-- Yuck! -->
-  <ng-container *ngIf="control.errors && control.touched">
+  <ng-container *ngIf="showErrors()">
     <div
       [ngClass]="{ 'help is-danger': showErrors() }"
-      *ngIf="control.errors['required']"
+      *ngIf="control.errors!['required']"
     >
       Value is required
     </div>
     <div
       [ngClass]="{ 'help is-danger': showErrors() }"
-      *ngIf="control.errors['minlength']"
+      *ngIf="control.errors!['minlength']"
     >
       Value must be longer than
-      {{ control.errors["minlength"].requiredLength }} characters
+      {{ control.errors!["minlength"].requiredLength }} characters
     </div>
     <div
       [ngClass]="{ 'help is-danger': showErrors() }"
-      *ngIf="control.errors['maxlength']"
+      *ngIf="control.errors!['maxlength']"
     >
       Value must be shorter than
-      {{ control.errors["maxlength"].requiredLength }} characters
+      {{ control.errors!["maxlength"].requiredLength }} characters
     </div>
     <div
       [ngClass]="{ 'help is-danger': showErrors() }"
-      *ngIf="control.errors['pattern']"
+      *ngIf="control.errors!['pattern']"
     >
       Invalid format
     </div>
