@@ -1,5 +1,11 @@
-<p>photo-show works!</p>
-<div>
-  <button (click)="handleClick()">Do the thing</button>
-  <img [src]="photoLink" alt="Photo" *ngIf="didFetch" />
-</div>
+<ng-container>
+  <button
+    (click)="handleClick()"
+    class="bg-white text-black py-2 px-4 rounded-lg border-gray-300 border"
+  >
+    Do the thing
+  </button>
+  <div class="rounded-lg bg-gray-200" *ngIf="didFetch">
+    <img [src]="photoLink" alt="Photo" class="p-4 max-w-screen-sm" />
+  </div>
+</ng-container>
