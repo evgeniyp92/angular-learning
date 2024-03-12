@@ -16,9 +16,20 @@ export class CardFormComponent {
       // Validators.maxLength(24),
       // Validators.pattern(/\\s/),
     ]),
-    cardNumber: new FormControl(''),
-    expiration: new FormControl(''),
-    cvv: new FormControl(''),
+    cardNumber: new FormControl('', [
+      Validators.required,
+      Validators.minLength(16),
+      Validators.maxLength(16),
+    ]),
+    expiration: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^(0[1-9]|1[1-2])\/\d{2}$/),
+    ]),
+    cvv: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(3),
+    ]),
   });
 
   onSubmit() {
