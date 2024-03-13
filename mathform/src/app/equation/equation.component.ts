@@ -8,6 +8,13 @@ import { CustomValidators } from '../custom-validators';
   styleUrl: './equation.component.css',
 })
 export class EquationComponent {
+  ngOnInit() {
+    // statusChanges emits whether or not the form is valid
+    this.mathForm.statusChanges.subscribe((value) => {
+      console.log(value);
+    });
+  }
+
   mathForm = new FormGroup(
     {
       a: new FormControl(this.randomNumber),
