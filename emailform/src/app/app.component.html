@@ -5,7 +5,7 @@
   development easier but you sacrifice the control you have with reactive forms.
  -->
 <!-- Syntax to get a reference to the FormGroup -->
-<form #emailForm="ngForm">
+<form (ngSubmit)="handleSubmit()" #emailForm="ngForm">
   <!-- Two-way binding actually. Basically, prop binding and event binding in one -->
   <!-- Any time you change the state from the form it will update, and it will
   also update any time you change it in the class, and that change will reflect
@@ -26,6 +26,7 @@
       Please enter a valid email
     </div>
   </ng-container>
+  <button [disabled]="emailForm.invalid">Submit</button>
 </form>
 <div>
   <pre>

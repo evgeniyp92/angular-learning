@@ -13,4 +13,8 @@ export class AppComponent {
     //   this.email += 'a';
     // }, 1000);
   }
+
+  handleSubmit() {
+    console.table({ email: this.email });
+  }
 }
