@@ -11,7 +11,7 @@ import { delay } from 'rxjs';
 export class EquationComponent {
   ngOnInit() {
     // statusChanges emits whether or not the form is valid
-    this.mathForm.statusChanges.pipe(delay(250)).subscribe((value) => {
+    this.mathForm.statusChanges.pipe(delay(150)).subscribe((value) => {
       if (value === 'INVALID') return;
 
       this.mathForm.setValue({
