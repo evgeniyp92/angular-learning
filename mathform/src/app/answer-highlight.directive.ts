@@ -27,9 +27,9 @@ export class AnswerHighlightDirective {
       )
       .subscribe((value) => {
         if (value < 0.2) {
-          this.element.nativeElement.classList.add('border-green-500');
+          this.element.nativeElement.classList.add('border-green-700');
         } else {
-          this.element.nativeElement.classList.remove('border-green-500');
+          this.element.nativeElement.classList.remove('border-green-700');
         }
       });
   }
