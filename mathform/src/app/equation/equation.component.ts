@@ -9,7 +9,12 @@ import { delay, filter } from 'rxjs';
   styleUrl: './equation.component.css',
 })
 export class EquationComponent {
+  secondsPerSolution = 0;
+
   ngOnInit() {
+    const startTime = new Date();
+    let numberSolved = 0;
+
     // statusChanges emits whether or not the form is valid
     this.mathForm.statusChanges
       .pipe(
@@ -17,6 +22,11 @@ export class EquationComponent {
         filter((value) => value === 'VALID')
       )
       .subscribe(() => {
+        numberSolved++;
+
+        this.secondsPerSolution =
+          (new Date().getTime() - startTime.getTime()) / numberSolved / 1000;
+
         this.mathForm.setValue({
           a: this.randomNumber,
           b: this.randomNumber,
