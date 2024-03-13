@@ -9,4 +9,6 @@ export class CustomValidators extends Validators {
     }
     return { passwordsDoNotMatch: true };
   }
+
+  static async usernameExists() {}
 }
