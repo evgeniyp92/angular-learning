@@ -15,7 +15,8 @@ export class EquationComponent {
       answer: new FormControl(''),
     },
     // form arg is provided automagically by Angular (via bind?)
-    [CustomValidators.addition]
+    // this was passing a ref but you can also use closures
+    [CustomValidators.addition('answer', 'a', 'b')]
   );
 
   get randomNumber() {
