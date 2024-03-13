@@ -1,13 +1,10 @@
-<form [formGroup]="mathForm">
-  {{ a }} + {{ b }} = <input formControlName="answer" />
-</form>
-
-{{ secondsPerSolution | number : "1.1-3" }} seconds per solution
-
-<div>
-  <pre>
-    {{ mathForm.valid }}
-    {{ mathForm.value | json }}
-    {{ mathForm.errors | json }}
-  </pre>
+<div class="flex flex-col items-center gap-16">
+  <form [formGroup]="mathForm" class="flex items-center justify-center">
+    <p class="text-5xl pr-4">{{ a }} + {{ b }} =</p>
+    <input
+      class="h-12 w-24 rounded bg-zinc-700 border border-zinc-500 px-2 text-3xl"
+      formControlName="answer"
+    />
+  </form>
+  <div>{{ secondsPerSolution | number : "1.1-3" }} seconds per solution</div>
 </div>
