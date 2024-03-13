@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CustomValidators } from '../../custom-validators';
+import { MatchPassword } from '../validators/match-password';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +8,7 @@ import { CustomValidators } from '../../custom-validators';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-  constructor() {}
+  constructor(private matchPassword: MatchPassword) {}
 
   authForm = new FormGroup(
     {
@@ -29,7 +29,6 @@ export class SignupComponent {
         Validators.maxLength(20),
       ]),
     },
-    // @ts-expect-error
-    [CustomValidators.passwordsMatch]
+    { validators: [this.matchPassword.validate] }
   );
 }

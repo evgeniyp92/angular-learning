@@ -1,14 +1,14 @@
-import { FormGroup, ValidationErrors, Validators } from '@angular/forms';
+// import { FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
-export class CustomValidators extends Validators {
-  static passwordsMatch(formGroup: FormGroup): ValidationErrors | null {
-    console.log(formGroup.value);
-    const { password, passwordConfirmation } = formGroup.value;
-    if (password === passwordConfirmation) {
-      return null;
-    }
-    return { passwordsDoNotMatch: true };
-  }
+// export class CustomValidators implements Validators {
+//   static passwordsMatch(formGroup: FormGroup): ValidationErrors | null {
+//     console.log(formGroup.value);
+//     const { password, passwordConfirmation } = formGroup.value;
+//     if (password === passwordConfirmation) {
+//       return null;
+//     }
+//     return { passwordsDoNotMatch: true };
+//   }
 
-  static async usernameExists() {}
-}
+//   static async usernameExists() {}
+// }
