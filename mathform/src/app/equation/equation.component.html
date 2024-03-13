@@ -1,8 +1,8 @@
 <div class="flex flex-col items-center gap-16">
-  <form [formGroup]="mathForm" class="flex items-center justify-center">
-    <p class="text-5xl pr-4">{{ a }} + {{ b }} =</p>
+  <form [formGroup]="mathForm" class="flex items-center justify-center h-36">
+    <span class="text-5xl pr-4 my-auto align-top">{{ a }} + {{ b }} =</span>
     <input
-      class="h-12 w-24 rounded bg-zinc-700 border border-zinc-500 px-2 text-3xl"
+      class="w-20 rounded bg-zinc-700 border border-zinc-500 text-4xl outline-none my-auto text-center"
       formControlName="answer"
     />
   </form>
