@@ -13,6 +13,8 @@
   <button class="ui submit button primary">Submit</button>
 </form>
 {{ authForm.value | json }}
+{{ authForm.errors | json }}
+<hr />
 {{ authForm.get("username")?.errors | json }}
 {{ authForm.get("password")?.errors | json }}
 {{ authForm.get("passwordConfirmation")?.errors | json }}
