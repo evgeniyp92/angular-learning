@@ -10,7 +10,22 @@
   <!-- Any time you change the state from the form it will update, and it will
   also update any time you change it in the class, and that change will reflect
   in the template -->
-  <input required name="email" [(ngModel)]="email" />
+  <!-- For validation in template forms, use the MDN HTML Spec for reference -->
+  <input
+    type="email"
+    pattern=".+@.+\..+"
+    required
+    name="email"
+    [(ngModel)]="email"
+    #emailControl="ngModel"
+  />
+  <!-- <ng-container *ngIf="emailForm.controls['email'].invalid"></ng-container> -->
+  <ng-container *ngIf="emailControl.invalid && emailControl.touched">
+    <div *ngIf="emailControl.errors!['required']">You must enter an email</div>
+    <div *ngIf="emailControl.errors!['pattern']">
+      Please enter a valid email
+    </div>
+  </ng-container>
 </form>
 <div>
   <pre>
