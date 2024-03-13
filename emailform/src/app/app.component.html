@@ -5,29 +5,43 @@
   development easier but you sacrifice the control you have with reactive forms.
  -->
 <!-- Syntax to get a reference to the FormGroup -->
-<form (ngSubmit)="handleSubmit()" #emailForm="ngForm">
-  <!-- Two-way binding actually. Basically, prop binding and event binding in one -->
-  <!-- Any time you change the state from the form it will update, and it will
-  also update any time you change it in the class, and that change will reflect
-  in the template -->
-  <!-- For validation in template forms, use the MDN HTML Spec for reference -->
-  <input
-    type="email"
-    pattern=".+@.+\..+"
-    required
-    name="email"
-    [(ngModel)]="email"
-    #emailControl="ngModel"
-  />
-  <!-- <ng-container *ngIf="emailForm.controls['email'].invalid"></ng-container> -->
-  <ng-container *ngIf="emailControl.invalid && emailControl.touched">
-    <div *ngIf="emailControl.errors!['required']">You must enter an email</div>
-    <div *ngIf="emailControl.errors!['pattern']">
-      Please enter a valid email
+<div class="container">
+  <form (ngSubmit)="handleSubmit()" #emailForm="ngForm">
+    <!-- Two-way binding actually. Basically, prop binding and event binding in one -->
+    <!-- Any time you change the state from the form it will update, and it will
+    also update any time you change it in the class, and that change will reflect
+    in the template -->
+    <!-- For validation in template forms, use the MDN HTML Spec for reference -->
+    <div class="field">
+      <label for="" class="label">Enter Email</label>
+      <input
+        [ngClass]="{
+          'is-danger': emailControl.invalid && emailControl.touched
+        }"
+        class="input"
+        type="email"
+        pattern=".+@.+\..+"
+        required
+        name="email"
+        [(ngModel)]="email"
+        #emailControl="ngModel"
+      />
+
+      <!-- <ng-container *ngIf="emailForm.controls['email'].invalid"></ng-container> -->
+      <ng-container *ngIf="emailControl.invalid && emailControl.touched">
+        <div class="help is-danger" *ngIf="emailControl.errors!['required']">
+          You must enter an email
+        </div>
+        <div class="help is-danger" *ngIf="emailControl.errors!['pattern']">
+          Please enter a valid email
+        </div>
+      </ng-container>
     </div>
-  </ng-container>
-  <button [disabled]="emailForm.invalid">Submit</button>
-</form>
+    <button class="button is-primary" [disabled]="emailForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>
 <div>
   <pre>
   {{ emailForm.valid }}
