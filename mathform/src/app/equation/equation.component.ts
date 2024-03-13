@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CustomValidators } from '../custom-validators';
-import { delay, filter } from 'rxjs';
+import { delay, filter, scan } from 'rxjs';
 
 @Component({
   selector: 'app-equation',
@@ -12,18 +12,22 @@ export class EquationComponent {
   secondsPerSolution = 0;
 
   ngOnInit() {
-    const startTime = new Date();
-    let numberSolved = 0;
-
     // statusChanges emits whether or not the form is valid
     this.mathForm.statusChanges
       .pipe(
+        filter((value) => value === 'VALID'),
         delay(150),
-        filter((value) => value === 'VALID')
+        scan(
+          (accumulator, __value) => {
+            return {
+              numberSolved: accumulator.numberSolved + 1,
+              startTime: accumulator.startTime,
+            };
+          },
+          { numberSolved: 0, startTime: new Date() }
+        )
       )
-      .subscribe(() => {
-        numberSolved++;
-
+      .subscribe(({ numberSolved, startTime }) => {
         this.secondsPerSolution =
           (new Date().getTime() - startTime.getTime()) / numberSolved / 1000;
 
