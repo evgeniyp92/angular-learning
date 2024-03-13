@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { CustomValidators } from '../custom-validators';
 
 @Component({
   selector: 'app-equation',
@@ -18,15 +14,8 @@ export class EquationComponent {
       b: new FormControl(this.randomNumber),
       answer: new FormControl(''),
     },
-    [
-      (form: AbstractControl): ValidationErrors | null => {
-        const { a, b, answer } = form.value;
-        if (a + b !== parseInt(answer)) {
-          return { addition: true }; // error case
-        }
-        return null; // success case
-      },
-    ]
+    // form arg is provided automagically by Angular (via bind?)
+    [CustomValidators.addition]
   );
 
   get randomNumber() {
