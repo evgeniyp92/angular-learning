@@ -1,10 +1,23 @@
-Let me spam you with crap emails
-<form>
+<!-- Template Form example -->
+<!-- 
+  Unlike reactive forms the template is what drives form groups and form
+  controls. Groups and controls are created automatically, which makes upfront
+  development easier but you sacrifice the control you have with reactive forms.
+ -->
+<!-- Syntax to get a reference to the FormGroup -->
+<form #emailForm="ngForm">
   <!-- Two-way binding actually. Basically, prop binding and event binding in one -->
   <!-- Any time you change the state from the form it will update, and it will
   also update any time you change it in the class, and that change will reflect
   in the template -->
-  <input name="email" [(ngModel)]="email" />
-  {{ email }}
+  <input required name="email" [(ngModel)]="email" />
 </form>
+<div>
+  <pre>
+  {{ emailForm.valid }}
+  {{ emailForm.value | json }}
+  <!-- Race condition here -->
+  {{ emailForm.controls["email"].errors | json }}
+  </pre>
+</div>
 <router-outlet />

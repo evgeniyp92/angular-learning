@@ -9,8 +9,8 @@ export class AppComponent {
   email: string = '';
 
   constructor() {
-    setInterval(() => {
-      this.email += 'a';
-    }, 1000);
+    // setInterval(() => {
+    //   this.email += 'a';
+    // }, 1000);
   }
 }
