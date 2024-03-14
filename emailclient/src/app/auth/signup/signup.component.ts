@@ -4,6 +4,7 @@ import { MatchPassword } from '../validators/match-password';
 import { CheckUniqueUsername } from '../validators/check-unique-username';
 import { AuthService, SignupCredentials } from '../auth.service';
 import { catchError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,8 @@ export class SignupComponent {
   constructor(
     private matchPassword: MatchPassword,
     private checkUniqueUsername: CheckUniqueUsername,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   authForm = new FormGroup(
@@ -52,6 +54,7 @@ export class SignupComponent {
       .subscribe({
         next: (response) => {
           // TODO: navigate to some other route
+          this.router.navigateByUrl('/inbox');
         },
         error: (error) => {
           if (error.status === 0) {

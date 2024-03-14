@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrl: './signin.component.css',
 })
 export class SigninComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
   authForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -28,7 +29,9 @@ export class SigninComponent {
     const { username, password } = this.authForm.value;
     if (username && password) {
       this.auth.signin(username, password).subscribe({
-        next: (response) => {},
+        next: (response) => {
+          this.router.navigateByUrl('/inbox');
+        },
         error: (err) => {
           if (err.error.username || err.error.password) {
             this.authForm.setErrors({ credentials: true });
