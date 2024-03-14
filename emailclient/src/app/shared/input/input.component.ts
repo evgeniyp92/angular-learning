@@ -8,5 +8,10 @@ import { FormControl, AbstractControl } from '@angular/forms';
 })
 export class InputComponent {
   @Input() label: string = '';
-  @Input() control: AbstractControl | null = new FormControl();
+  @Input() control: FormControl = new FormControl();
+
+  showErrors() {
+    const { dirty, touched, errors } = this.control;
+    return dirty && touched && errors;
+  }
 }
