@@ -29,7 +29,10 @@ export class CheckUniqueUsername implements AsyncValidator {
         catchError((err, caught): ObservableInput<any> => {
           console.log(err);
           console.log(caught);
-          return of({ nonUniqueUsername: true }); // of converts the value to an observable
+          if (err.error.username) {
+            return of({ nonUniqueUsername: true });
+          }
+          return of({ generalError: true }); // of converts the value to an observable
         })
       )
       .toPromise(); // convert the observable to a promise to make it actually run
