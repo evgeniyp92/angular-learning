@@ -23,7 +23,7 @@ export class SignupComponent {
           Validators.minLength(3),
           Validators.maxLength(20),
           Validators.pattern(/^[a-z0-9]+$/),
-        ],
+        ], // async validators are only ran after all sync validators pass
         [this.checkUniqueUsername.validate]
       ),
       password: new FormControl('', [
