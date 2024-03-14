@@ -15,7 +15,19 @@
     label="Password Confirmation"
     [control]="authForm.controls.passwordConfirmation"
   />
-  <button class="ui submit button primary">Submit</button>
+
+  <div
+    class="ui red basic label"
+    *ngIf="
+      authForm.controls.password.touched &&
+      authForm.controls.passwordConfirmation.touched &&
+      authForm.errors
+    "
+  >
+    <p *ngIf="authForm.errors.passwordsDoNotMatch">Passwords must match</p>
+  </div>
+
+  <div><button class="ui submit button primary">Submit</button></div>
 </form>
 <!-- <hr />
 {{ authForm.value | json }}
