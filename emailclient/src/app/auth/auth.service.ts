@@ -70,4 +70,17 @@ export class AuthService {
       })
     );
   }
+
+  signin(...credentials: [username: string, password: string]) {
+    return this.http
+      .post(this.rootUrl + 'auth/signin', {
+        username: credentials[0],
+        password: credentials[1],
+      })
+      .pipe(
+        tap(() => {
+          this.signedIn$.next(true);
+        })
+      );
+  }
 }
