@@ -7,20 +7,19 @@ import {
 } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { map, catchError, ObservableInput, of } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 @Injectable({ providedIn: 'root' }) // enables dependency injection
 export class CheckUniqueUsername implements AsyncValidator {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private auth: AuthService) {}
   // normally you would use a service to hit an outside resource but we'll do it this way here
   // have to specify an AbstractControl as the arg type because FormControl does not fully implement AbstractControl
   validate = async (
     control: AbstractControl
   ): Promise<ValidationErrors | null> => {
     const value = control.value;
-    return this.httpClient
-      .post<any>('https://api.angular-email.com/auth/username', {
-        username: value,
-      })
+    return this.auth
+      .usernameAvailable(value)
       .pipe(
         map((value) => {
           if (value.available) return null;
