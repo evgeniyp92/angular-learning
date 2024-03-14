@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { map, catchError, ObservableInput, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' }) // enables dependency injection
 export class CheckUniqueUsername implements AsyncValidator {
@@ -16,7 +17,21 @@ export class CheckUniqueUsername implements AsyncValidator {
     control: AbstractControl
   ): Promise<ValidationErrors | null> => {
     const value = control.value;
-    console.log('value', value);
-    return null;
+    return this.httpClient
+      .post<any>('https://api.angular-email.com/auth/username', {
+        username: value,
+      })
+      .pipe(
+        map((value) => {
+          if (value.available) return null;
+          return null;
+        }),
+        catchError((err, caught): ObservableInput<any> => {
+          console.log(err);
+          console.log(caught);
+          return of({ nonUniqueUsername: true }); // of converts the value to an observable
+        })
+      )
+      .toPromise(); // convert the observable to a promise to make it actually run
   };
 }
