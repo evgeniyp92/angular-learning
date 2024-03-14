@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatchPassword } from '../validators/match-password';
 import { CheckUniqueUsername } from '../validators/check-unique-username';
-import { AuthService } from '../auth.service';
+import { AuthService, SignupCredentials } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -44,9 +44,11 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.authForm.invalid) return;
-    console.log(this.authForm.value);
-    this.authService.signup(this.authForm.value).subscribe((value) => {
-      console.log(value);
-    });
+
+    this.authService
+      .signup(this.authForm.value as SignupCredentials)
+      .subscribe((value) => {
+        console.log(value);
+      });
   }
 }
