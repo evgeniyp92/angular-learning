@@ -21,14 +21,16 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     const newReq = req.clone({
       withCredentials: true,
     });
-    console.log(newReq);
+    // console.log(newReq);
     // handing off the http request to the next interceptor or the actual request handler
     // this is actually an observable so we can listen to it after we hand it off
-    return next.handle(newReq).pipe(
-      filter((v) => v.type === HttpEventType.Sent),
-      tap((v) => {
-        console.log('Request was sent to server');
-      })
-    );
+    return next
+      .handle(newReq)
+      .pipe
+      // filter((v) => v.type === HttpEventType.Sent),
+      // tap(() => {
+      //   console.log('Request was sent to server');
+      // })
+      ();
   }
 }
