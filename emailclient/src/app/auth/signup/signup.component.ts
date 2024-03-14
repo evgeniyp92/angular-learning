@@ -16,12 +16,16 @@ export class SignupComponent {
 
   authForm = new FormGroup(
     {
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
-        Validators.pattern(/^[a-z0-9]+$/),
-      ]),
+      username: new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+          Validators.pattern(/^[a-z0-9]+$/),
+        ],
+        [this.checkUniqueUsername.validate]
+      ),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
