@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatchPassword } from '../validators/match-password';
 import { CheckUniqueUsername } from '../validators/check-unique-username';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,8 @@ import { CheckUniqueUsername } from '../validators/check-unique-username';
 export class SignupComponent {
   constructor(
     private matchPassword: MatchPassword,
-    private checkUniqueUsername: CheckUniqueUsername
+    private checkUniqueUsername: CheckUniqueUsername,
+    private authService: AuthService
   ) {}
 
   authForm = new FormGroup(
@@ -39,4 +41,12 @@ export class SignupComponent {
     },
     { validators: [this.matchPassword.validate] }
   );
+
+  onSubmit() {
+    if (this.authForm.invalid) return;
+    console.log(this.authForm.value);
+    this.authService.signup(this.authForm.value).subscribe((value) => {
+      console.log(value);
+    });
+  }
 }
