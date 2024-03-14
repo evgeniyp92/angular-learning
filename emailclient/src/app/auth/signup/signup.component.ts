@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatchPassword } from '../validators/match-password';
 import { CheckUniqueUsername } from '../validators/check-unique-username';
 import { AuthService, SignupCredentials } from '../auth.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -47,8 +48,17 @@ export class SignupComponent {
 
     this.authService
       .signup(this.authForm.value as SignupCredentials)
-      .subscribe((value) => {
-        console.log(value);
+      // bind these to the component instance to avoid context issues
+      .subscribe({
+        next: (response) => {
+          // TODO: navigate to some other route
+        },
+        error: (error) => {
+          if (error.status === 0) {
+            this.authForm.setErrors({ noConnection: true });
+          }
+          this.authForm.setErrors({ unknownError: true });
+        },
       });
   }
 }

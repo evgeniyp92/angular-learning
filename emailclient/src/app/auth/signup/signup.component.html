@@ -25,6 +25,8 @@
     "
   >
     <p *ngIf="authForm.errors.passwordsDoNotMatch">Passwords must match</p>
+    <p *ngIf="authForm.errors.noConnection">No Internet Connection Detected</p>
+    <p *ngIf="authForm.errors.unknownError">An Unknown Error Occured</p>
   </div>
 
   <div>
