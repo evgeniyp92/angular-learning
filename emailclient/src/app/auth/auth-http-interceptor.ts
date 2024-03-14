@@ -13,7 +13,12 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(req);
-    return next.handle(req); // handing off the http request to the next interceptor or the actual request handler
+    // req.withCredentials = true; // doesnt work, props are read-only
+    // const newReq = { ...req, withCredentials: true }; // doesnt work, missing serialize method
+    const newReq = req.clone({
+      withCredentials: true,
+    });
+    console.log(newReq);
+    return next.handle(newReq); // handing off the http request to the next interceptor or the actual request handler
   }
 }
