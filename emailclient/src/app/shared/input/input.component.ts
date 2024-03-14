@@ -9,6 +9,7 @@ import { FormControl, AbstractControl } from '@angular/forms';
 export class InputComponent {
   @Input() label: string = '';
   @Input() control: FormControl = new FormControl();
+  @Input() inputType: 'password' | 'text' = 'text';
 
   showErrors() {
     const { dirty, touched, errors } = this.control;

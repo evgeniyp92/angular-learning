@@ -1,8 +1,17 @@
 <h3>Create an Account</h3>
 <form class="ui form" [formGroup]="authForm">
-  <app-input label="Username" [control]="authForm.get('username')" />
-  <app-input label="Password" [control]="authForm.get('password')" />
   <app-input
+    inputType="text"
+    label="Username"
+    [control]="authForm.get('username')"
+  />
+  <app-input
+    inputType="password"
+    label="Password"
+    [control]="authForm.get('password')"
+  />
+  <app-input
+    inputType="password"
     label="Password Confirmation"
     [control]="authForm.controls.passwordConfirmation"
   />
