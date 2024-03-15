@@ -28,6 +28,10 @@ interface SignedInResponse {
   username: string;
 }
 
+interface SigninResponse {
+  username: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -35,6 +39,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   private rootUrl = 'https://api.angular-email.com/';
   public signedIn$ = new BehaviorSubject<boolean | null>(null); // add dollar sign to indicate that it is an observable
+  public username: string = '';
 
   usernameAvailable(username: string) {
     return this.http.post<UsernameAvailableResponse>(
@@ -49,7 +54,8 @@ export class AuthService {
     return this.http
       .post<SignupResponse>(this.rootUrl + 'auth/signup', credentials, {})
       .pipe(
-        tap(() => {
+        tap((value) => {
+          this.username = value.username;
           this.signedIn$.next(true);
         })
       );
@@ -57,7 +63,8 @@ export class AuthService {
 
   checkAuth() {
     return this.http.get<SignedInResponse>(this.rootUrl + 'auth/signedin').pipe(
-      tap(({ authenticated }) => {
+      tap(({ authenticated, username }) => {
+        this.username = username;
         this.signedIn$.next(authenticated);
       })
     );
@@ -73,12 +80,13 @@ export class AuthService {
 
   signin(...credentials: [username: string, password: string]) {
     return this.http
-      .post(this.rootUrl + 'auth/signin', {
+      .post<SigninResponse>(this.rootUrl + 'auth/signin', {
         username: credentials[0],
         password: credentials[1],
       })
       .pipe(
-        tap(() => {
+        tap((value) => {
+          this.username = value.username;
           this.signedIn$.next(true);
         })
       );
