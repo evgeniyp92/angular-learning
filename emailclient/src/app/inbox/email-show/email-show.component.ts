@@ -3,13 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { EmailService } from '../email.service';
 import { switchMap } from 'rxjs';
 import { Email } from '../email';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-email-show',
   templateUrl: './email-show.component.html',
   styleUrl: './email-show.component.css',
 })
-export class EmailShowComponent {
+export class EmailShowComponent implements OnInit {
   uid = '';
   email: Email | null = null;
 
@@ -28,6 +29,7 @@ export class EmailShowComponent {
   // look for BehaviorSubjects, Subjects etc
 
   ngOnInit() {
+    console.log('hush eslint');
     // this.route.params.subscribe((snapshot) => {
     // this.uid = snapshot['id'];
     // you should avoid nesting subscribes, creates risk of out-of-order execution
