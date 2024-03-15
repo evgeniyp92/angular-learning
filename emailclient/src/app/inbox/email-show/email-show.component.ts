@@ -18,7 +18,7 @@ export class EmailShowComponent {
     private emailService: EmailService
   ) {
     // console.log(this.route.snapshot.data); // data from the resolver should be here
-    this.route.data.subscribe((data) => console.log(data)); // with this approach you should subscribe so that it reruns on a page change
+    this.route.data.subscribe((data) => (this.email = data['email'])); // with this approach you should subscribe so that it reruns on a page change
   }
 
   // Observables emit values whenever some specific part of the URL changes

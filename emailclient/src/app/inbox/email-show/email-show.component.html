@@ -1,14 +1,14 @@
 <p>email-show works!</p>
 {{ uid }}
 {{ email | json }}
-<ng-container *ngIf="email">
+<ng-container>
   <div class="header">
-    <h3>{{ email.subject }}</h3>
+    <h3>{{ email!.subject }}</h3>
     <div>
-      From: <i>{{ email.from }}</i>
+      From: <i>{{ email!.from }}</i>
     </div>
     <div>
-      To: <i>{{ email.to }}</i>
+      To: <i>{{ email!.to }}</i>
     </div>
   </div>
 </ng-container>

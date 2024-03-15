@@ -5,6 +5,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Email } from './email';
+import { EmailService } from './email.service';
 
 // resolvers block route loading until they're done
 
@@ -13,15 +14,29 @@ import { Email } from './email';
   providedIn: 'root',
 })
 export class EmailResolverService implements Resolve<Email> {
-  constructor() {}
+  constructor(private emailService: EmailService) {}
 
-  resolve() {
-    return {
-      id: 'asdf',
-      subject: 'yeah',
-      to: 'uh-huh',
-      from: 'ur mom',
-      text: 'yeah guess what i did last night',
-    };
+  resolve(route: ActivatedRouteSnapshot) {
+    const { id } = route.params;
+    return this.emailService.getEmail(id);
   }
 }
+
+/**
+ * 
+ * Since Resolve is depricated here's a solution with the ResolveFn instead:
+
+import { ResolveFn } from '@angular/router';
+import { EmailResponse, EmailService } from './email.service';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+ 
+ 
+export const emailResolver: ResolveFn<EmailResponse> =
+    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+      const { id } = route.params;
+      return  inject(EmailService).getEmail(id);
+    };
+ 
+ * 
+ */
