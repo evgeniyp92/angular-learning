@@ -16,7 +16,10 @@ export class EmailShowComponent {
   constructor(
     private route: ActivatedRoute,
     private emailService: EmailService
-  ) {}
+  ) {
+    // console.log(this.route.snapshot.data); // data from the resolver should be here
+    this.route.data.subscribe((data) => console.log(data)); // with this approach you should subscribe so that it reruns on a page change
+  }
 
   // Observables emit values whenever some specific part of the URL changes
   // Snapshots are simple descriptions of what the URL is right now, but it never updates after the first run
@@ -33,21 +36,20 @@ export class EmailShowComponent {
     // });
     // });
     // this.uid = this.route.snapshot.params['id']; // getting it from snapshot
-
     // instead of nesting subscribes, pipe into a switchMap and return the
     // Observable from the switchMap, then subscribe to the returned observable
     // and use the result
-    this.route.params
-      .pipe(
-        switchMap(({ id }) => {
-          this.uid = id;
-          return this.emailService.getEmail(id);
-        })
-      )
-      .subscribe((email) => {
-        console.log(email);
-        this.email = email;
-      });
+    // this.route.params
+    //   .pipe(
+    //     switchMap(({ id }) => {
+    //       this.uid = id;
+    //       return this.emailService.getEmail(id);
+    //     })
+    //   )
+    //   .subscribe((email) => {
+    //     console.log(email);
+    //     this.email = email;
+    //   });
   }
 }
 
