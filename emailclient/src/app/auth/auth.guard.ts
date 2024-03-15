@@ -7,14 +7,15 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, skipWhile, take } from 'rxjs';
+import { Observable, skipWhile, take, tap } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanLoad {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canLoad(
     route: Route,
@@ -25,9 +26,12 @@ export class AuthGuard implements CanLoad {
     //   subscriber.complete(); // this step seems irrelevant on Ng17 but its good to know anyway
     // });
     return this.authService.signedIn$.pipe(
-      // @ts-expect-error
       skipWhile((value) => value === null), // ignore values that are null
-      take(1) // take the first value that is not skipped
+      // @ts-expect-error
+      take(1), // take the first value that is not skipped
+      tap((authenticated) => {
+        if (!authenticated) this.router.navigateByUrl('/'); // navigate the user back to home page if they're somewhere they shouldn't be
+      })
     );
   }
 }
