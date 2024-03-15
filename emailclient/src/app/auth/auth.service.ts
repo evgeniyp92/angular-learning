@@ -34,7 +34,7 @@ interface SignedInResponse {
 export class AuthService {
   constructor(private http: HttpClient) {}
   private rootUrl = 'https://api.angular-email.com/';
-  public signedIn$ = new BehaviorSubject(false); // add dollar sign to indicate that it is an observable
+  public signedIn$ = new BehaviorSubject<boolean | null>(null); // add dollar sign to indicate that it is an observable
 
   usernameAvailable(username: string) {
     return this.http.post<UsernameAvailableResponse>(
