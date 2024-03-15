@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Email, EmailService } from '../email.service';
+import { EmailService } from '../email.service';
 import { switchMap } from 'rxjs';
+import { Email } from '../email';
 
 @Component({
   selector: 'app-email-show',
