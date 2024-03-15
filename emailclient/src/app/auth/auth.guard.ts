@@ -17,6 +17,9 @@ export class AuthGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
+    return new Observable((subscriber) => {
+      subscriber.next(true); // this doesnt strictly mark an Observable as complete
+      subscriber.complete(); // this step seems irrelevant on Ng17 but its good to know anyway
+    });
   }
 }
