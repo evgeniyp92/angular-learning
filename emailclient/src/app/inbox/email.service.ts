@@ -7,6 +7,15 @@ export interface EmailSummary {
   from: string;
 }
 
+export interface Email {
+  id: string;
+  subject: string;
+  text: string;
+  to: string;
+  from: string;
+  html?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,5 +26,9 @@ export class EmailService {
 
   getEmails() {
     return this.http.get<EmailSummary[]>(this.rootUrl + 'emails'); // sends cookies because of the httpinterceptor
+  }
+
+  getEmail(id: string) {
+    return this.http.get<Email>(this.rootUrl + 'emails/' + id);
   }
 }
