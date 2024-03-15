@@ -1,13 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Resolve,
-  RouterStateSnapshot,
-  Router,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { Email } from './email';
 import { EmailService } from './email.service';
-import { Observable, catchError, EMPTY } from 'rxjs';
+import { catchError, EMPTY } from 'rxjs';
 
 // resolvers block route loading until they're done
 
