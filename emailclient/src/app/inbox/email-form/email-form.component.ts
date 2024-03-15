@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Email } from '../email';
 
@@ -10,6 +10,7 @@ import { Email } from '../email';
 export class EmailFormComponent implements OnInit {
   emailForm: FormGroup | null = null; // set up the emailForm and assign it null for now
   @Input() initialValues: Email | null = null; // get values passed by email-create
+  @Output() emailSubmit = new EventEmitter(); // emit the emailSubmit event
 
   ngOnInit() {
     // null check
@@ -23,5 +24,11 @@ export class EmailFormComponent implements OnInit {
         text: new FormControl(text, [Validators.required]),
       });
     }
+  }
+
+  onSubmit() {
+    if (!this.emailForm || this.emailForm.invalid) return;
+    console.log(this.emailForm.value); // only returns non-disabled fields, can get all with this.emailForm.getRawValue()
+    this.emailSubmit.emit(this.emailForm.value);
   }
 }
